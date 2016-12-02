@@ -127,6 +127,7 @@ void RootPersistencyManager::writeHitsCollections(const G4Event* anEvent, Event*
     for (int iColl = 0; iColl < nColl; iColl++) {
         G4VHitsCollection* hc = hce->GetHC(iColl);
         std::string collName = hc->GetName();
+        std::cout << "Reading out the collName " << collName << std::endl;
         int nHits = hc->GetSize();
         TClonesArray* outputColl = outputEvent->getCollection(hc->GetName());
         if (dynamic_cast<G4TrackerHitsCollection*>(hc) != nullptr) {
