@@ -88,7 +88,7 @@ G4bool EcalSD::ProcessHits(G4Step* aStep, G4TouchableHistory*) {
  }
 
 void EcalSD::initialiseMap(const double width, const double side) {
-
+	map = new TH2Poly();
 	// Center a cell at (x,y)=(0,0) and ensure coverage up to/past width/2 in all 4 directions,
 	// assuming each cell is lying on a side.
 
