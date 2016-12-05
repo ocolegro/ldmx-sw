@@ -151,7 +151,7 @@ void EcalSD::buildMap(Double_t xstart,
 			;
 			x[5] = x[1];
 			y[5] = y[4];
-
+			std::cout << "Adding a bin to the map" << std::endl;
 			map->AddBin(6, x, y);
 
 			// Go up
