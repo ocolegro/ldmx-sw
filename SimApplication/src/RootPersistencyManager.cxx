@@ -56,15 +56,19 @@ void RootPersistencyManager::buildEvent(const G4Event* anEvent, Event* outputEve
     // Copy hit objects from SD hit collections into the output event.
     writeHitsCollections(anEvent, outputEvent);
 
+    std::cout << "Getting event pointer " << std::endl;
     // Set pointer to current G4Event.
     simParticleBuilder_.setCurrentEvent(anEvent);
 
+    std::cout << "Getting sim particle builder " << std::endl;
     // Build the SimParticle list for the output ROOT event.
     simParticleBuilder_.buildSimParticles(outputEvent);
 
+    std::cout << "Getting sim tracker hits " << std::endl;
     // Assign SimParticle objects to SimTrackerHits.
     simParticleBuilder_.assignTrackerHitSimParticles();
 
+    std::cout << "Getting calo tracker hits " << std::endl;
     // Assign SimParticle objects to SimCalorimeterHits.
     simParticleBuilder_.assignCalorimeterHitSimParticles();
 }
