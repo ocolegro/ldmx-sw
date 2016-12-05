@@ -20,7 +20,7 @@ namespace sim {
 
 EcalSD::EcalSD(G4String name, G4String theCollectionName, int subdetID, DetectorID* detID) :
 		CalorimeterSD(name,theCollectionName,subdetID,detID){
-	initialiseMap(EventConstants::ECAL_MAP_XY,EventConstants::CELL_SIZE);
+	//initialiseMap(EventConstants::ECAL_MAP_XY,EventConstants::CELL_SIZE);
 };
 
 EcalSD::~EcalSD() {}
