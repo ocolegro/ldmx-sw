@@ -68,6 +68,7 @@ G4bool EcalSD::ProcessHits(G4Step* aStep, G4TouchableHistory*) {
     int layerNumber = prePoint->GetTouchableHandle()->GetHistory()->GetVolume(layerDepth_)->GetCopyNo();
     int cellID = map->FindBin(position[0],position[1]);
     detID_->setFieldValue(1, layerNumber);
+    std::cout << "THe cellID is " << cellID << std::endl;
     detID_->setFieldValue(2, cellID);
     hit->setID(detID_->pack());
 
@@ -145,7 +146,6 @@ void EcalSD::buildMap(Double_t xstart,
 			;
 			x[5] = x[1];
 			y[5] = y[4];
-			std::cout << "Adding a bin to the map" << std::endl;
 			map->AddBin(6, x, y);
 
 			// Go up
