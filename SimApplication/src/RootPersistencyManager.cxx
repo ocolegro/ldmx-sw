@@ -56,22 +56,17 @@ void RootPersistencyManager::buildEvent(const G4Event* anEvent, Event* outputEve
     // Copy hit objects from SD hit collections into the output event.
     writeHitsCollections(anEvent, outputEvent);
 
-    std::cout << "Getting event pointer " << std::endl;
     // Set pointer to current G4Event.
     simParticleBuilder_.setCurrentEvent(anEvent);
 
-    std::cout << "Getting sim particle builder " << std::endl;
     // Build the SimParticle list for the output ROOT event.
     simParticleBuilder_.buildSimParticles(outputEvent);
 
-    std::cout << "Getting sim tracker hits " << std::endl;
     // Assign SimParticle objects to SimTrackerHits.
     simParticleBuilder_.assignTrackerHitSimParticles();
 
-    std::cout << "Getting calo tracker hits " << std::endl;
     // Assign SimParticle objects to SimCalorimeterHits.
     simParticleBuilder_.assignCalorimeterHitSimParticles();
-    std::cout << "Event built. " << std::endl;
 }
 
 void RootPersistencyManager::printEvent(Event* outputEvent) {
@@ -132,21 +127,17 @@ void RootPersistencyManager::writeHitsCollections(const G4Event* anEvent, Event*
     for (int iColl = 0; iColl < nColl; iColl++) {
         G4VHitsCollection* hc = hce->GetHC(iColl);
         std::string collName = hc->GetName();
-        std::cout << "Reading out the collName " << collName << std::endl;
         int nHits = hc->GetSize();
-        std::cout << "There are nHits = " << nHits << std::endl;
 
         TClonesArray* outputColl = outputEvent->getCollection(hc->GetName());
         if (dynamic_cast<G4TrackerHitsCollection*>(hc) != nullptr) {
             for (int iHit = 0; iHit < nHits; iHit++) {
-            	std::cout << "Reading out the hit number " << iHit << std::endl;
                 G4TrackerHit* g4hit = (G4TrackerHit*) hc->GetHit(iHit);
                 SimTrackerHit* simHit = (SimTrackerHit*) outputColl->ConstructedAt(outputColl->GetEntries());
                 g4hit->setSimTrackerHit(simHit); /* copy data from G4 hit to sim hit */
             }
         } else if (dynamic_cast<G4CalorimeterHitsCollection*>(hc) != nullptr) {
             for (int iHit = 0; iHit < nHits; iHit++) {
-            	std::cout << "Reading out the hit number " << iHit << std::endl;
                 G4CalorimeterHit* g4hit = (G4CalorimeterHit*) hc->GetHit(iHit);
                 SimCalorimeterHit* simHit = (SimCalorimeterHit*) outputColl->ConstructedAt(outputColl->GetEntries());
                 if (collName == EventConstants::ECAL_SIM_HITS){
@@ -162,7 +153,6 @@ void RootPersistencyManager::writeHitsCollections(const G4Event* anEvent, Event*
             }
         }
     }
-    std::cout << "Collections are looped through successfully" << std::endl;
 }
 
 } // namespace sim

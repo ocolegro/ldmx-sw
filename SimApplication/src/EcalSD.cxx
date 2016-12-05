@@ -20,7 +20,6 @@ namespace sim {
 
 EcalSD::EcalSD(G4String name, G4String theCollectionName, int subdetID, DetectorID* detID) :
 		CalorimeterSD(name,theCollectionName,subdetID,detID){
-	std::cout << "Building an ECALSD, Passing in  XY dim = " << EventConstants::ECAL_MAP_XY << " cell size = " << EventConstants::CELL_SIZE << std::endl;
 	initialiseMap(EventConstants::ECAL_MAP_XY,EventConstants::CELL_SIZE);
 };
 
@@ -77,7 +76,7 @@ G4bool EcalSD::ProcessHits(G4Step* aStep, G4TouchableHistory*) {
 
     if (this->verboseLevel > 2) {
         std::cout << "Created new SimCalorimeterHit in detector " << this->GetName()
-                << " with subdet ID " << subdet_ << " and layer " << layerNumber ;//<< " and cellid " << cellID << "..." << std::endl;
+                << " with subdet ID " << subdet_ << " and layer " << layerNumber << " and cellid " << cellID << " ..." ;
         hit->Print();
         std::cout << std::endl;
     }
@@ -97,11 +96,6 @@ void EcalSD::initialiseMap(const double width, const double side) {
 	unsigned nx        = ncellwide + 4;
 	double   xstart    = -((double) ncellwide + 0.5) * side;
 	double   ystart    = -((double) ncellwide + 1) * side * sqrt(3) / 2;
-
-	std::cout << " -- Initialising HoneyComb with parameters: " << std::endl
-			<< " ---- (xstart,ystart) = (" << xstart << "," << ystart << ")"
-			<< ", side = " << side << ", nx = " << nx << ", ny=" << ny
-			<< std::endl;
 
 	if (this->verboseLevel > 0) {
 		std::cout << " -- Initialising HoneyComb with parameters: " << std::endl
