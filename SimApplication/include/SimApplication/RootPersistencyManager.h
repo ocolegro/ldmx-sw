@@ -99,6 +99,7 @@ class RootPersistencyManager : public G4PersistencyManager {
 
         SimParticleBuilder simParticleBuilder_;
         RootEventWriter* writer_;
+        map<int,int> ecalHitReadout;
 };
 
 }
