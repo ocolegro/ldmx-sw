@@ -114,9 +114,12 @@ void SimParticleBuilder::assignTrackerHitSimParticles() {
 
 void SimParticleBuilder::assignCalorimeterHitSimParticles() {
     G4HCofThisEvent* hce = currentEvent_->GetHCofThisEvent();
+    std::cout << "Beginning to assign hit-sim correspondance" << std::endl;
     int nColl = hce->GetNumberOfCollections();
     for (int iColl = 0; iColl < nColl; iColl++) {
         G4VHitsCollection* hitsColl = hce->GetHC(iColl);
+        std::string collName = hitsColl->GetName();
+        std::cout << "Reading out the collName " << collName << std::endl;
         G4CalorimeterHitsCollection* calHits = dynamic_cast<G4CalorimeterHitsCollection*>(hitsColl);
         if (calHits != NULL) {
             int nHits = calHits->GetSize();
