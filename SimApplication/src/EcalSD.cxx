@@ -76,7 +76,7 @@ G4bool EcalSD::ProcessHits(G4Step* aStep, G4TouchableHistory*) {
 
     if (this->verboseLevel > 2) {
         std::cout << "Created new SimCalorimeterHit in detector " << this->GetName()
-                << " with subdet ID " << subdet_ << " and layer " << layerNumber << " and cellid " << cellID << "..." << std::endl;
+                << " with subdet ID " << subdet_ << " and layer " << layerNumber ;//<< " and cellid " << cellID << "..." << std::endl;
         hit->Print();
         std::cout << std::endl;
     }
