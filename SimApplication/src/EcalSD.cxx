@@ -20,9 +20,7 @@ namespace sim {
 EcalSD::EcalSD(G4String name, G4String theCollectionName, int subdetID, DetectorID* detID) :
 		CalorimeterSD(name,theCollectionName,subdetID,detID){};
 
-EcalSD::~EcalSD() {
-    delete detID_;
-}
+EcalSD::~EcalSD() {};
 
 G4bool EcalSD::ProcessHits(G4Step* aStep, G4TouchableHistory*) {
 
