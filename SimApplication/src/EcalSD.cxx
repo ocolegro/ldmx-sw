@@ -24,7 +24,7 @@ EcalSD::EcalSD(G4String name, G4String theCollectionName, int subdetID, Detector
 	initialiseMap(EventConstants::ECAL_MAP_XY,EventConstants::CELL_SIZE);
 };
 
-EcalSD::~EcalSD() {};
+EcalSD::~EcalSD() {}
 
 G4bool EcalSD::ProcessHits(G4Step* aStep, G4TouchableHistory*) {
 

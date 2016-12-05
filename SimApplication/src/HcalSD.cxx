@@ -20,7 +20,7 @@ namespace sim {
 HcalSD::HcalSD(G4String name, G4String theCollectionName, int subdetID, DetectorID* detID) :
 		CalorimeterSD(name,theCollectionName,subdetID,detID){};
 
-HcalSD::~HcalSD()  {};
+HcalSD::~HcalSD()  {}
 
 G4bool HcalSD::ProcessHits(G4Step* aStep, G4TouchableHistory*) {
 

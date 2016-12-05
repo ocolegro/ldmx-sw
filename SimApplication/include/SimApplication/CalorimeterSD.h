@@ -29,7 +29,7 @@ class CalorimeterSD: public G4VSensitiveDetector {
             this->layerDepth_ = layerDepth;
         }
 
-        virtual G4bool ProcessHits(G4Step* aStep, G4TouchableHistory* ROhist);
+        virtual G4bool ProcessHits(G4Step* aStep, G4TouchableHistory* ROhist) = 0;
 
         void Initialize(G4HCofThisEvent* hcEvent);
 
