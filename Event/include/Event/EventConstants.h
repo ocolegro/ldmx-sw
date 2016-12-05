@@ -36,8 +36,8 @@ class EventConstants {
         /*
          * Detector Specs
          */
-        static const G4double EventConstants::ECAL_MAP_XY;
-        static const G4double EventConstants::CELL_SIZE;
+        static const double ECAL_MAP_XY;
+        static const double CELL_SIZE;
 }; // class EventConstants
 
 } // namespace event
