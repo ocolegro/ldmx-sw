@@ -132,12 +132,14 @@ void RootPersistencyManager::writeHitsCollections(const G4Event* anEvent, Event*
         TClonesArray* outputColl = outputEvent->getCollection(hc->GetName());
         if (dynamic_cast<G4TrackerHitsCollection*>(hc) != nullptr) {
             for (int iHit = 0; iHit < nHits; iHit++) {
+            	std::cout << "Reading out the hit number " << iHit << std::endl;
                 G4TrackerHit* g4hit = (G4TrackerHit*) hc->GetHit(iHit);
                 SimTrackerHit* simHit = (SimTrackerHit*) outputColl->ConstructedAt(outputColl->GetEntries());
                 g4hit->setSimTrackerHit(simHit); /* copy data from G4 hit to sim hit */
             }
         } else if (dynamic_cast<G4CalorimeterHitsCollection*>(hc) != nullptr) {
             for (int iHit = 0; iHit < nHits; iHit++) {
+            	std::cout << "Reading out the hit number " << iHit << std::endl;
                 G4CalorimeterHit* g4hit = (G4CalorimeterHit*) hc->GetHit(iHit);
                 SimCalorimeterHit* simHit = (SimCalorimeterHit*) outputColl->ConstructedAt(outputColl->GetEntries());
                 if (collName == EventConstants::ECAL_SIM_HITS){
