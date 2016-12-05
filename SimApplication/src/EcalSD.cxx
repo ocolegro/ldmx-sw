@@ -18,20 +18,7 @@ using event::RootEventWriter;
 namespace sim {
 
 EcalSD::EcalSD(G4String name, G4String theCollectionName, int subdetID, DetectorID* detID) :
-    G4VSensitiveDetector(name),
-    hitsCollection_(0),
-    subdet_(subdetID),
-    detID_(detID) {
-
-    // Add the collection name to vector of names.
-    this->collectionName.push_back(theCollectionName);
-
-    // Register this SD with the manager.
-    G4SDManager::GetSDMpointer()->AddNewDetector(this);
-
-    // Set the subdet ID as it will always be the same for every hit.
-    detID_->setFieldValue("subdet", subdet_);
-}
+		CalorimeterSD(name,theCollectionName,subdetID,detID){};
 
 EcalSD::~EcalSD() {
     delete detID_;
