@@ -1,14 +1,8 @@
 #ifndef SIMAPPLICATION_HCALSD_H_
 #define SIMAPPLICATION_HCALSD_H_
 
-// Geant4
-#include "G4VSensitiveDetector.hh"
-
 // LDMX
-#include "Event/Event.h"
-#include "SimApplication/G4CalorimeterHit.h"
 #include "SimApplication/CalorimeterSD.h"
-#include "DetDescr/DetectorID.h"
 
 using detdescr::DetectorID;
 using event::Event;

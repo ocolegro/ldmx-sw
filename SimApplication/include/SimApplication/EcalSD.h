@@ -1,14 +1,9 @@
 #ifndef SIMAPPLICATION_ECALSD_H_
 #define SIMAPPLICATION_ECALSD_H_
 
-// Geant4
-#include "G4VSensitiveDetector.hh"
-
 // LDMX
 #include "Event/Event.h"
 #include "SimApplication/CalorimeterSD.h"
-#include "SimApplication/G4CalorimeterHit.h"
-#include "DetDescr/DetectorID.h"
 
 // ROOT
 #include "TH2Poly.h"

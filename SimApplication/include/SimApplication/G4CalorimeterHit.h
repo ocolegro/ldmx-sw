@@ -64,23 +64,6 @@ class G4CalorimeterHit: public G4VHit {
             this->simCalHit_ = simCalHit;
         }
 
-        bool setSimEcalReadoutHit(SimCalorimeterHit* simCalHit) {
-            simCalHit->setID(id_);
-            simCalHit->setEdep(edep_);
-            simCalHit->setPosition(position_.x(), position_.y(), position_.z());
-            simCalHit->setTime(time_);
-            this->simCalHit_ = simCalHit;
-            return false;
-        }
-
-        void setSimHcalReadoutHit(SimCalorimeterHit* simCalHit) {
-            simCalHit->setID(id_);
-            simCalHit->setEdep(edep_);
-            simCalHit->setPosition(position_.x(), position_.y(), position_.z());
-            simCalHit->setTime(time_);
-            this->simCalHit_ = simCalHit;
-        }
-
         SimCalorimeterHit* getSimCalorimeterHit() {
             return simCalHit_;
         }
