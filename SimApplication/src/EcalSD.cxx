@@ -66,7 +66,9 @@ G4bool EcalSD::ProcessHits(G4Step* aStep, G4TouchableHistory*) {
 
     // Set the ID on the hit.
     int layerNumber = prePoint->GetTouchableHandle()->GetHistory()->GetVolume(layerDepth_)->GetCopyNo();
+    //int cellID = map->FindBin(position[0],position[1]);
     detID_->setFieldValue(1, layerNumber);
+    //detID_->setFieldValue(2, cellID);
     hit->setID(detID_->pack());
 
     // Set the track ID on the hit.
@@ -74,7 +76,7 @@ G4bool EcalSD::ProcessHits(G4Step* aStep, G4TouchableHistory*) {
 
     if (this->verboseLevel > 2) {
         std::cout << "Created new SimCalorimeterHit in detector " << this->GetName()
-                << " with subdet ID " << subdet_ << " and layer " << layerNumber << " ..." << std::endl;
+                << " with subdet ID " << subdet_ << " and layer " << layerNumber << " and cellid " << cellID << "..." << std::endl;
         hit->Print();
         std::cout << std::endl;
     }
