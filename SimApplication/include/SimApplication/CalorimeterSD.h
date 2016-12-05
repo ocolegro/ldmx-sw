@@ -35,7 +35,7 @@ class CalorimeterSD: public G4VSensitiveDetector {
 
         void EndOfEvent(G4HCofThisEvent* hcEvent);
 
-    private:
+    protected:
 
         G4CalorimeterHitsCollection* hitsCollection_;
         int subdet_;
