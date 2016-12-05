@@ -111,8 +111,10 @@ void EcalSD::buildMap(Double_t xstart,
 	Double_t numberOfHexagonsInAColumn;
 	Double_t x[6], y[6];
 	Double_t xloop, yloop, ytemp;
+	Double_t sqrt_three = sqrt(3);
 	xloop = xstart;
-	yloop = ystart + a * TMath::Sqrt(3) / 2.0;
+	yloop = ystart + a * sqrt_three / 2.0;
+
 	for (int sCounter = 0; sCounter < s; sCounter++) {
 
 		ytemp = yloop; // Resets the temp variable
@@ -131,14 +133,14 @@ void EcalSD::buildMap(Double_t xstart,
 			x[0] = xloop;
 			y[0] = ytemp;
 			x[1] = x[0] + a / 2.0;
-			y[1] = y[0] + a * TMath::Sqrt(3) / 2.0;
+			y[1] = y[0] + a * sqrt_three / 2.0;
 			x[2] = x[1] + a;
 			y[2] = y[1];
 			x[3] = x[2] + a / 2.0;
-			y[3] = y[1] - a * TMath::Sqrt(3) / 2.0;
+			y[3] = y[1] - a * sqrt_three / 2.0;
 			;
 			x[4] = x[2];
-			y[4] = y[3] - a * TMath::Sqrt(3) / 2.0;
+			y[4] = y[3] - a * sqrt_three / 2.0;
 			;
 			x[5] = x[1];
 			y[5] = y[4];
@@ -146,14 +148,14 @@ void EcalSD::buildMap(Double_t xstart,
 			map->AddBin(6, x, y);
 
 			// Go up
-			ytemp += a * TMath::Sqrt(3);
+			ytemp += a * sqrt_three;
 		}
 
 		// Increment the starting position
 		if (sCounter % 2 == 0)
-			yloop += a * TMath::Sqrt(3) / 2.0;
+			yloop += a * sqrt_three / 2.0;
 		else
-			yloop -= a * TMath::Sqrt(3) / 2.0;
+			yloop -= a * sqrt_three / 2.0;
 		xloop += 1.5 * a;
 		}
  }
