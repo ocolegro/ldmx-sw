@@ -154,6 +154,7 @@ void RootPersistencyManager::writeHitsCollections(const G4Event* anEvent, Event*
             }
         }
     }
+    std::cout << "Collections are looped through successfully" << std::endl;
 }
 
 } // namespace sim
