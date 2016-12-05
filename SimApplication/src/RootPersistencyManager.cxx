@@ -156,6 +156,9 @@ void RootPersistencyManager::writeHitsCollections(const G4Event* anEvent, Event*
                 else if (collName == EventConstants::HCAL_SIM_HITS){
                 		g4hit->setSimCalorimeterHit(simHit); /* copy data from G4 hit to sim hit */
                 }
+                else{
+                		g4hit->setSimCalorimeterHit(simHit); /* copy data from G4 hit to sim hit */
+                }
             }
         }
     }
