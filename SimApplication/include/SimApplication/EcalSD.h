@@ -10,6 +10,9 @@
 #include "SimApplication/G4CalorimeterHit.h"
 #include "DetDescr/DetectorID.h"
 
+// ROOT
+#include "TH2Poly.h"
+
 using detdescr::DetectorID;
 using event::Event;
 
