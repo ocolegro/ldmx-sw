@@ -71,6 +71,7 @@ void RootPersistencyManager::buildEvent(const G4Event* anEvent, Event* outputEve
     std::cout << "Getting calo tracker hits " << std::endl;
     // Assign SimParticle objects to SimCalorimeterHits.
     simParticleBuilder_.assignCalorimeterHitSimParticles();
+    std::cout << "Event built. " << std::endl;
 }
 
 void RootPersistencyManager::printEvent(Event* outputEvent) {
