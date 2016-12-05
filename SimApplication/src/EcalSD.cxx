@@ -21,7 +21,7 @@ namespace sim {
 EcalSD::EcalSD(G4String name, G4String theCollectionName, int subdetID, DetectorID* detID) :
 		CalorimeterSD(name,theCollectionName,subdetID,detID){
 	std::cout << "Building an ECALSD " << std::endl;
-	//initialiseMap(EventConstants::ECAL_MAP_XY,EventConstants::CELL_SIZE);
+	initialiseMap(EventConstants::ECAL_MAP_XY,EventConstants::CELL_SIZE);
 };
 
 EcalSD::~EcalSD() {}
@@ -69,7 +69,7 @@ G4bool EcalSD::ProcessHits(G4Step* aStep, G4TouchableHistory*) {
     int layerNumber = prePoint->GetTouchableHandle()->GetHistory()->GetVolume(layerDepth_)->GetCopyNo();
     //int cellID = map->FindBin(position[0],position[1]);
     detID_->setFieldValue(1, layerNumber);
-    //detID_->setFieldValue(2, cellID);
+    detID_->setFieldValue(2, cellID);
     hit->setID(detID_->pack());
 
     // Set the track ID on the hit.
