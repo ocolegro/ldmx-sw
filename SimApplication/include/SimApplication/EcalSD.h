@@ -9,6 +9,7 @@
 #include "SimApplication/CalorimeterSD.h"
 #include "SimApplication/G4CalorimeterHit.h"
 #include "DetDescr/DetectorID.h"
+#include "Th2Poly.h"
 
 using detdescr::DetectorID;
 using event::Event;
@@ -37,7 +38,7 @@ class EcalSD : public CalorimeterSD {
 				Int_t s);
 		inline TH2Poly * getMap(){
 			return map;
-		}
+		};
     private:
 		TH2Poly *map;
 };
