@@ -149,7 +149,7 @@ void RootPersistencyManager::writeHitsCollections(const G4Event* anEvent, Event*
                         int detIDraw= g4hit->getID();
                         detID->setRawValue(detIDraw);
                         detID->unpack();
-                        std::cout << "layer: " << layer << std::endl;
+                        int layer=detID->getFieldValue("layer");
                         int cellid=detID->getFieldValue("cellid");
 
                 		ReadoutCalorimeterHit* readHit = (ReadoutCalorimeterHit*) outputColl->ConstructedAt(outputColl->GetEntries());
