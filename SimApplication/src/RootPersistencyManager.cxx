@@ -10,8 +10,7 @@
 #include "G4RunManager.hh"
 
 // TEmp
-#include "DetDescr/DetectorIDStore.h"
-using detdescr::DetectorIDStore;
+
 //
 using event::Event;
 using event::EventConstants;
@@ -23,6 +22,7 @@ RootPersistencyManager::RootPersistencyManager()
             writer_(new RootEventWriter("ldmx_sim_events.root", new SimEvent)) {
     G4PersistencyCenter::GetPersistencyCenter()->RegisterPersistencyManager(this);
     G4PersistencyCenter::GetPersistencyCenter()->SetPersistencyManager(this, "RootPersistencyManager");
+    detID = new DefaultDetectorID();
 }
 
 G4bool RootPersistencyManager::Store(const G4Event* anEvent) {
@@ -144,11 +144,6 @@ void RootPersistencyManager::writeHitsCollections(const G4Event* anEvent, Event*
             for (int iHit = 0; iHit < nHits; iHit++) {
                 G4CalorimeterHit* g4hit = (G4CalorimeterHit*) hc->GetHit(iHit);
                 if (collName == EventConstants::ECAL_SIM_HITS){
-                		std::cout << "The hit id is " << g4hit->getID() << std::endl;
-
-                	    DetectorID* detID = new DefaultDetectorID();
-                	    std::string idName = "EcalSD1";
-
 
                         int detIDraw= g4hit->getID();
                         std::cout << "detID raw: " << detIDraw << std::endl;

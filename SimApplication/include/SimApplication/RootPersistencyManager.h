@@ -13,15 +13,18 @@
 #include "G4Run.hh"
 
 // LDMX
+#include "DetDescr/DefaultDetectorID.h"
+#include "DetDescr/DetectorId.h"
 #include "Event/SimEvent.h"
 #include "Event/RootEventWriter.h"
 #include "SimApplication/SimParticleBuilder.h"
-#include "DetDescr/DefaultDetectorID.h"
+
+using detdescr::DetectorID;
+using detdescr::DefaultDetectorID;
 using event::RootEventWriter;
 using event::Event;
 using event::SimEvent;
-using detdescr::DetectorID;
-using detdescr::DefaultDetectorID;
+
 namespace sim {
 
 class RootPersistencyManager : public G4PersistencyManager {
@@ -100,6 +103,7 @@ class RootPersistencyManager : public G4PersistencyManager {
 
         SimParticleBuilder simParticleBuilder_;
         RootEventWriter* writer_;
+        DetectorID* detID;
        // map<int,int> ecalHitReadout;
 };
 
