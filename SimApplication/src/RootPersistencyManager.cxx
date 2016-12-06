@@ -148,20 +148,16 @@ void RootPersistencyManager::writeHitsCollections(const G4Event* anEvent, Event*
 
                 	    DetectorID* detID = new DefaultDetectorID();
                 	    std::string idName = "EcalSD1";
-						detID = DetectorIDStore::getInstance()->getID(idName);
-				        if (!detID) {
-				            std::cerr << "The Detector ID " << idName << " does not exist.  Is it defined before the SensDet in userinfo?" << std::endl;
-				            G4Exception("", "", FatalException, "The referenced Detector ID was not found.");
-				        }
+
 
                         int detIDraw= g4hit->getID();
-                        std::cout << "detIDraw: " << detIDraw << std::endl;
+                        std::cout << "detID raw: " << detIDraw << std::endl;
                         detID->setRawValue(detIDraw);
                         detID->unpack();
                         int layer=detID->getFieldValue("layer");
                         std::cout << "layer: " << layer << std::endl;
 
-                        int cellid=detID->getFieldValue("cellID");
+                        int cellid=detID->getFieldValue("cellid");
                         std::cout << "cellid: " << cellid << std::endl;
 
                 		ReadoutCalorimeterHit* readHit = (ReadoutCalorimeterHit*) outputColl->ConstructedAt(outputColl->GetEntries());
