@@ -70,6 +70,7 @@ void RootPersistencyManager::buildEvent(const G4Event* anEvent, Event* outputEve
     simParticleBuilder_.assignTrackerHitSimParticles();
 
     // Assign SimParticle objects to SimCalorimeterHits.
+    std::cout << "Assigning hit particles now " << std::endl;
     simParticleBuilder_.assignCalorimeterHitSimParticles();
 }
 
@@ -146,14 +147,10 @@ void RootPersistencyManager::writeHitsCollections(const G4Event* anEvent, Event*
                 if (collName == EventConstants::ECAL_SIM_HITS){
 
                         int detIDraw= g4hit->getID();
-                        std::cout << "detID raw: " << detIDraw << std::endl;
                         detID->setRawValue(detIDraw);
                         detID->unpack();
-                        int layer=detID->getFieldValue("layer");
                         std::cout << "layer: " << layer << std::endl;
-
                         int cellid=detID->getFieldValue("cellid");
-                        std::cout << "cellid: " << cellid << std::endl;
 
                 		ReadoutCalorimeterHit* readHit = (ReadoutCalorimeterHit*) outputColl->ConstructedAt(outputColl->GetEntries());
                 		g4hit->ReadCalorimeterHit(readHit); /* copy data from G4 hit to sim hit */
