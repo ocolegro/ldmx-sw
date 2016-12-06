@@ -14,7 +14,7 @@
 
 // LDMX
 #include "DetDescr/DefaultDetectorID.h"
-#include "DetDescr/DetectorId.h"
+#include "DetDescr/DetectorID.h"
 #include "Event/SimEvent.h"
 #include "Event/RootEventWriter.h"
 #include "SimApplication/SimParticleBuilder.h"
