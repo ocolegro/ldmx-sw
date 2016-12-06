@@ -73,16 +73,17 @@ class G4CalorimeterHit: public G4VHit {
         void ReadCalorimeterHit(ReadoutCalorimeterHit* readoutHit) {
 			readoutHit->setID(id_ + readoutHit->getID());
 			readoutHit->setEdep(edep_ + readoutHit->getEdep());
-			std::vector<float> readoutPosition = readoutHit->getPosition();
 			readoutHit->setPosition(position_.x(), position_.y(), position_.z());
-			//readoutHit->setTime(time_ + readoutHit->getTime());
+			readoutHit->setTime(time_ + readoutHit->getTime());
             this->readCalHit_ = readoutHit;
         }
 
         SimCalorimeterHit* getSimCalorimeterHit() {
             return simCalHit_;
         }
-
+        ReadoutCalorimeterHit* getReadCalorimeterHit() {
+            return readCalHit_;
+        }
     private:
 
         int trackID_{-1};
