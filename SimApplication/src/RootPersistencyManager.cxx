@@ -10,7 +10,9 @@
 #include "G4RunManager.hh"
 
 // TEmp
-#include "DetDescr/IDField.h"
+#include "DetDescr/DetectorIDStore.h"
+using detdescr::DetectorIDStore;
+//
 using event::Event;
 using event::EventConstants;
 
@@ -144,12 +146,15 @@ void RootPersistencyManager::writeHitsCollections(const G4Event* anEvent, Event*
                 if (collName == EventConstants::ECAL_SIM_HITS){
                 		std::cout << "The hit id is " << g4hit->getID() << std::endl;
 
-                		DetectorID* detID = 0;
+                	    DetectorID* detID = new DefaultDetectorID();
+
+						detID = DetectorIDStore::getInstance()->getID(5);
+                		/*DetectorID* detID = 0;
                 		detdescr::IDField::IDFieldList* fieldList = new detdescr::IDField::IDFieldList();
                 	    fieldList->push_back(new detdescr::IDField("subdet", 0, 0, 3));
                 	    fieldList->push_back(new detdescr::IDField("layer", 1, 4, 11));
-                	    fieldList->push_back(new detdescr::IDField("cellID", 1, 4, 11));
-                	    detID->setFieldList(fieldList);
+                	    fieldList->push_back(new detdescr::IDField("cellID", 2, 11, 18));
+                	    detID->setFieldList(fieldList);*/
                         int detIDraw= g4hit->getID();
                         std::cout << "detIDraw: " << detIDraw << std::endl;
                         detID->setRawValue(detIDraw);
