@@ -176,6 +176,7 @@ void RootPersistencyManager::writeHitsCollections(const G4Event* anEvent, Event*
                 		g4hit->setSimCalorimeterHit(simHit); /* copy data from G4 hit to sim hit */
                 }
             }
+            ecalReadoutMap.clear();
         }
     }
 }

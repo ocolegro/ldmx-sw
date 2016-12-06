@@ -105,7 +105,7 @@ class RootPersistencyManager : public G4PersistencyManager {
         RootEventWriter* writer_;
         DetectorID* detID;
         typedef std::pair<int, int> layer_cell_pair;
-        typedef std::map<layer_cell_pair, int> ecalReadoutMap;
+        std::map<layer_cell_pair, int> ecalReadoutMap;
 
 };
 
