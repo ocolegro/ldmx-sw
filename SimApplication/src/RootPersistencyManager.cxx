@@ -140,7 +140,7 @@ void RootPersistencyManager::writeHitsCollections(const G4Event* anEvent, Event*
             for (int iHit = 0; iHit < nHits; iHit++) {
                 G4CalorimeterHit* g4hit = (G4CalorimeterHit*) hc->GetHit(iHit);
                 if (collName == EventConstants::ECAL_SIM_HITS){
-                		SimCalorimeterHit* simHit = (SimCalorimeterHit*) outputColl->ConstructedAt(outputColl->GetEntries());
+                		ReadoutCalorimeterHit* simHit = (ReadoutCalorimeterHit*) outputColl->ConstructedAt(outputColl->GetEntries());
                 		g4hit->setSimCalorimeterHit(simHit); /* copy data from G4 hit to sim hit */
                 		//if (inserted) outputColl->RemoveAt(outputColl->GetEntries());
                 }
