@@ -6,7 +6,7 @@
 #include "TRef.h"
 
 // LDMX
-#include "Event/ReadoutParticle.h"
+#include "Event/SimParticle.h"
 
 namespace event {
 
