@@ -104,7 +104,9 @@ class RootPersistencyManager : public G4PersistencyManager {
         SimParticleBuilder simParticleBuilder_;
         RootEventWriter* writer_;
         DetectorID* detID;
-       // map<int,int> ecalHitReadout;
+        typedef std::pair<int, int> layer_cell_pair;
+        typedef std::map<layer_cell_pair, int> ecalReadoutMap;
+
 };
 
 }

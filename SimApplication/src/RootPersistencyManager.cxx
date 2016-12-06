@@ -144,6 +144,7 @@ void RootPersistencyManager::writeHitsCollections(const G4Event* anEvent, Event*
                 g4hit->setSimTrackerHit(simHit); /* copy data from G4 hit to sim hit */
             }
         } else if (dynamic_cast<G4CalorimeterHitsCollection*>(hc) != nullptr) {
+        	std::pair<std::map<layer_cell_pair, int>::iterator, bool> isInserted;
             for (int iHit = 0; iHit < nHits; iHit++) {
                 G4CalorimeterHit* g4hit = (G4CalorimeterHit*) hc->GetHit(iHit);
                 if (collName == EventConstants::ECAL_SIM_HITS){
@@ -151,10 +152,19 @@ void RootPersistencyManager::writeHitsCollections(const G4Event* anEvent, Event*
                         int detIDraw= g4hit->getID();
                         detID->setRawValue(detIDraw);
                         detID->unpack();
-                        int layer=detID->getFieldValue("layer");
+                        int layer =detID->getFieldValue("layer");
                         int cellid=detID->getFieldValue("cellid");
+                        std::pair<layer_cell_pair,int> layer_cell_index =
+                        		std::make_pair(std::make_pair(layer,cellid),outputColl->GetEntries());
+                        isInserted = ecalReadoutMap.insert(layer_cell_index);
 
-                		ReadoutCalorimeterHit* readHit = (ReadoutCalorimeterHit*) outputColl->ConstructedAt(outputColl->GetEntries());
+                        ReadoutCalorimeterHit* readHit;
+                        if (!isInserted.second){
+                        	readHit = (ReadoutCalorimeterHit*) outputColl->ConstructedAt(isInserted.first->second);
+                        }
+                        else{
+                    		readHit = (ReadoutCalorimeterHit*) outputColl->ConstructedAt(outputColl->GetEntries());
+                        }
                 		g4hit->ReadCalorimeterHit(readHit); /* copy data from G4 hit to sim hit */
                 }
                 else if (collName == EventConstants::HCAL_SIM_HITS){
