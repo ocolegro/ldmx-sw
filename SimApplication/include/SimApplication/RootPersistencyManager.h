@@ -20,6 +20,7 @@
 using event::RootEventWriter;
 using event::Event;
 using event::SimEvent;
+using event::ReadoutCalorimeterHit;
 
 namespace sim {
 
