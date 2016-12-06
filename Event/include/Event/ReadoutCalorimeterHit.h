@@ -38,8 +38,8 @@ class ReadoutCalorimeterHit: public TObject {
             return time_;
         }
 
-        ReadoutParticle* getReadoutParticle() {
-            return (ReadoutParticle*) ReadoutParticle_.GetObject();
+        SimParticle* getSimParticle() {
+            return (SimParticle*) SimParticle_.GetObject();
         }
 
         void setID(const int id) {
@@ -60,8 +60,8 @@ class ReadoutCalorimeterHit: public TObject {
             this->time_ = time;
         }
 
-        void setReadoutParticle(ReadoutParticle* ReadoutParticle) {
-            this->ReadoutParticle_ = ReadoutParticle;
+        void setSimParticle(SimParticle* SimParticle) {
+            this->SimParticle_ = SimParticle;
         }
 
     private:
