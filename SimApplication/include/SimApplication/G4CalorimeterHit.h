@@ -11,6 +11,7 @@
 #include "Event/SimCalorimeterHit.h"
 
 using event::SimCalorimeterHit;
+using event::ReadoutCalorimeterHit;
 
 namespace sim {
 
@@ -44,6 +45,10 @@ class G4CalorimeterHit: public G4VHit {
             this->id_ = id;
         }
 
+        int getID(){
+        	return id_;
+        }
+
         void setEdep(float edep) {
             this->edep_ = edep;
         }
@@ -64,6 +69,15 @@ class G4CalorimeterHit: public G4VHit {
             this->simCalHit_ = simCalHit;
         }
 
+        void ReadCalorimeterHit(ReadoutCalorimeterHit* readoutHit) {
+			readoutHit->setID(id_ + readoutHit->getID());
+			readoutHit->setEdep(edep_ + readoutHit->getEdep());
+			std::vector<float> readoutPosition = readoutHit->getPosition();
+			readoutHit->setPosition(position_.x(), position_.y(), position_.z());
+			//readoutHit->setTime(time_ + readoutHit->getTime());
+            this->readCalHit_ = readoutHit;
+        }
+
         SimCalorimeterHit* getSimCalorimeterHit() {
             return simCalHit_;
         }
@@ -77,6 +91,8 @@ class G4CalorimeterHit: public G4VHit {
         float time_{0};
 
         SimCalorimeterHit* simCalHit_{nullptr};
+        ReadoutCalorimeterHit* readCalHit_{nullptr};
+
 };
 
 /**

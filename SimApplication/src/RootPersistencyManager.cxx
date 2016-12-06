@@ -9,6 +9,8 @@
 // Geant4
 #include "G4RunManager.hh"
 
+// TEmp
+#include "DetDescr/IDField.h"
 using event::Event;
 using event::EventConstants;
 
@@ -140,9 +142,26 @@ void RootPersistencyManager::writeHitsCollections(const G4Event* anEvent, Event*
             for (int iHit = 0; iHit < nHits; iHit++) {
                 G4CalorimeterHit* g4hit = (G4CalorimeterHit*) hc->GetHit(iHit);
                 if (collName == EventConstants::ECAL_SIM_HITS){
-                		ReadoutCalorimeterHit* simHit = (ReadoutCalorimeterHit*) outputColl->ConstructedAt(outputColl->GetEntries());
-                		g4hit->setSimCalorimeterHit(simHit); /* copy data from G4 hit to sim hit */
-                		//if (inserted) outputColl->RemoveAt(outputColl->GetEntries());
+                		std::cout << "The hit id is " << g4hit->getID() << std::endl;
+
+                		DetectorID* detID = 0;
+                		detdescr::IDField::IDFieldList* fieldList = new IDField::IDFieldList();
+                	    fieldList->push_back(new detdescr::IDField("subdet", 0, 0, 3));
+                	    fieldList->push_back(new detdescr::IDField("layer", 1, 4, 11));
+                	    fieldList->push_back(new detdescr::IDField("cellID", 1, 4, 11));
+                	    detID->setFieldList(fieldList);
+                        int detIDraw= g4hit->getID();
+                        std::cout << "detIDraw: " << detIDraw << std::endl;
+                        detID->setRawValue(detIDraw);
+                        detID->unpack();
+                        int layer=detID->getFieldValue("layer");
+                        std::cout << "layer: " << layer << std::endl;
+
+                        int cellid=detID->getFieldValue("cellID");
+                        std::cout << "cellid: " << cellid << std::endl;
+
+                		ReadoutCalorimeterHit* readHit = (ReadoutCalorimeterHit*) outputColl->ConstructedAt(outputColl->GetEntries());
+                		g4hit->ReadCalorimeterHit(readHit); /* copy data from G4 hit to sim hit */
                 }
                 else if (collName == EventConstants::HCAL_SIM_HITS){
                 		SimCalorimeterHit* simHit = (SimCalorimeterHit*) outputColl->ConstructedAt(outputColl->GetEntries());

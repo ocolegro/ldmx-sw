@@ -16,12 +16,12 @@
 #include "Event/SimEvent.h"
 #include "Event/RootEventWriter.h"
 #include "SimApplication/SimParticleBuilder.h"
-
+#include "DetDescr/DefaultDetectorID.h"
 using event::RootEventWriter;
 using event::Event;
 using event::SimEvent;
-using event::ReadoutCalorimeterHit;
-
+using detdescr::DetectorID;
+using detdescr::DefaultDetectorID;
 namespace sim {
 
 class RootPersistencyManager : public G4PersistencyManager {
