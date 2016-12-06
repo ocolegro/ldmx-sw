@@ -147,18 +147,13 @@ void RootPersistencyManager::writeHitsCollections(const G4Event* anEvent, Event*
                 		std::cout << "The hit id is " << g4hit->getID() << std::endl;
 
                 	    DetectorID* detID = new DefaultDetectorID();
-                	    std::string idName = "EcalSD";
+                	    std::string idName = "EcalSD1";
 						detID = DetectorIDStore::getInstance()->getID(idName);
 				        if (!detID) {
-				            std::cerr << "The Detector ID" << idName << " does not exist.  Is it defined before the SensDet in userinfo?" << std::endl;
+				            std::cerr << "The Detector ID " << idName << " does not exist.  Is it defined before the SensDet in userinfo?" << std::endl;
 				            G4Exception("", "", FatalException, "The referenced Detector ID was not found.");
 				        }
-                		/*DetectorID* detID = 0;
-                		detdescr::IDField::IDFieldList* fieldList = new detdescr::IDField::IDFieldList();
-                	    fieldList->push_back(new detdescr::IDField("subdet", 0, 0, 3));
-                	    fieldList->push_back(new detdescr::IDField("layer", 1, 4, 11));
-                	    fieldList->push_back(new detdescr::IDField("cellID", 2, 11, 18));
-                	    detID->setFieldList(fieldList);*/
+
                         int detIDraw= g4hit->getID();
                         std::cout << "detIDraw: " << detIDraw << std::endl;
                         detID->setRawValue(detIDraw);
