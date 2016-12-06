@@ -147,8 +147,12 @@ void RootPersistencyManager::writeHitsCollections(const G4Event* anEvent, Event*
                 		std::cout << "The hit id is " << g4hit->getID() << std::endl;
 
                 	    DetectorID* detID = new DefaultDetectorID();
-
-						detID = DetectorIDStore::getInstance()->getID(5);
+                	    std::string idName = "EcalSD";
+						detID = DetectorIDStore::getInstance()->getID(idName);
+				        if (!detID) {
+				            std::cerr << "The Detector ID" << idName << " does not exist.  Is it defined before the SensDet in userinfo?" << std::endl;
+				            G4Exception("", "", FatalException, "The referenced Detector ID was not found.");
+				        }
                 		/*DetectorID* detID = 0;
                 		detdescr::IDField::IDFieldList* fieldList = new detdescr::IDField::IDFieldList();
                 	    fieldList->push_back(new detdescr::IDField("subdet", 0, 0, 3));
