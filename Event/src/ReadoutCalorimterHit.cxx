@@ -3,7 +3,7 @@
 // STL
 #include <iostream>
 
-ClasReadoutp(event::ReadoutCalorimeterHit)
+ClassImp(event::ReadoutCalorimeterHit)
 
 namespace event {
 
