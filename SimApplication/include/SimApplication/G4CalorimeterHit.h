@@ -9,6 +9,7 @@
 
 // LDMX
 #include "Event/SimCalorimeterHit.h"
+#include "Event/ReadoutCalorimeterHit.h"
 
 using event::SimCalorimeterHit;
 using event::ReadoutCalorimeterHit;
