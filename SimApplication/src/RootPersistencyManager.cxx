@@ -64,13 +64,15 @@ void RootPersistencyManager::buildEvent(const G4Event* anEvent, Event* outputEve
     simParticleBuilder_.setCurrentEvent(anEvent);
 
     // Build the SimParticle list for the output ROOT event.
+    std::cout << "Building simparticle list" << std::endl;
     simParticleBuilder_.buildSimParticles(outputEvent);
 
     // Assign SimParticle objects to SimTrackerHits.
+    std::cout << "Assigning hit particles to trakcer now" << std::endl;
     simParticleBuilder_.assignTrackerHitSimParticles();
 
     // Assign SimParticle objects to SimCalorimeterHits.
-    std::cout << "Assigning hit particles now " << std::endl;
+    std::cout << "Assigning hit particles to calor now " << std::endl;
     simParticleBuilder_.assignCalorimeterHitSimParticles();
 }
 

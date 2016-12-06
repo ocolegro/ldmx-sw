@@ -118,10 +118,13 @@ void SimParticleBuilder::assignCalorimeterHitSimParticles() {
     for (int iColl = 0; iColl < nColl; iColl++) {
         G4VHitsCollection* hitsColl = hce->GetHC(iColl);
         std::string collName = hitsColl->GetName();
+        std::cout << "Assigning hits for collection " << collName << std::endl;
         G4CalorimeterHitsCollection* calHits = dynamic_cast<G4CalorimeterHitsCollection*>(hitsColl);
         if (calHits != NULL) {
             int nHits = calHits->GetSize();
+            std::cout << "The number of hits is " << nHits << std::endl;
             for (int iHit = 0; iHit < nHits; iHit++) {
+            	std::cout << "The casting hit " << iHit << std::endl;
                 G4CalorimeterHit* hit = (G4CalorimeterHit*) calHits->GetHit(iHit);
                 int trackID = hit->getTrackID();
                 if (trackID > 0) {
