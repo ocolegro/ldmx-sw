@@ -163,23 +163,8 @@ void RootPersistencyManager::writeHitsCollections(const G4Event* anEvent, Event*
 					else{
 						readHit = (ReadoutCalorimeterHit*) outputColl->ConstructedAt(outputColl->GetEntries());
 					}
-					std::cout << "For set " << collName << " we had nhits = " << outputColl->GetEntries() << std::endl;
-					std::cout << "The latest hit deposited energy =  " << g4hit->getEdep() << std::endl;
-					if (!isInserted.second){
-						std::cout << "This is a repeated hit that previously had energy = " << isInserted.second << "reading a hit with energy " << readHit->getEdep()
-								<< "from iLoc = " << isInserted.first->second << " we are adding on energy from g4hit " << g4hit->getEdep() << std::endl;
-					}
-					else{
-						std::cout << "The hit is new and was deposited at  " << outputColl->GetEntries() << std::endl;
-					}
-						g4hit->ReadCalorimeterHit(readHit,!isInserted.second); /* copy data from G4 hit to sim hit */
-					if (!isInserted.second){
-							std::cout << "The deposited energy is now " << readHit->getEdep() << std::endl;
-					}
-					for (int iHit = 0; iHit < outputColl->GetEntries(); iHit++) {
-						ReadoutCalorimeterHit* readHit = (ReadoutCalorimeterHit*) outputColl->At(iHit );
-						std::cout << "iHit = " << iHit << " has energy = " << readHit->getEdep() << std::endl;
-					}
+
+					g4hit->ReadCalorimeterHit(readHit,!isInserted.second); /* copy data from G4 hit to readout hit */
 				}
 
 				ecalReadoutMap.clear();

@@ -78,10 +78,6 @@ class G4CalorimeterHit: public G4VHit {
 
 			if(existingHit){
 				readoutHit->setEdep(edep_ + readoutHit->getEdep());
-				/*readoutHit->setID(id_);
-				readoutHit->setPosition(position_.x(), position_.y(), position_.z());
-				readoutHit->setTime(time_);
-				this->readCalHit_ = readoutHit;*/
 			}
 			else{
 				readoutHit->setID(id_);
