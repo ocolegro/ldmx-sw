@@ -27,8 +27,6 @@ class EcalHitMap {
 			return ecalMap;
 		};
 
-
-
     private:
 
         TH2Poly *ecalMap;

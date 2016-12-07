@@ -157,13 +157,13 @@ void RootPersistencyManager::writeHitsCollections(const G4Event* anEvent, Event*
 							std::make_pair(std::make_pair(layer,cellid),outputColl->GetEntries());
 					isInserted = ecalReadoutMap.insert(layer_cell_index);
 
-					SimCalorimeterHit* readHit;
+					SimCalorimeterHit* simHit;
 					if (isInserted.second == false){
 						simHit = (SimCalorimeterHit*) outputColl->At(isInserted.first->second );
 					} else{
 						simHit = (SimCalorimeterHit*) outputColl->ConstructedAt(outputColl->GetEntries());
 					}
-					g4hit->setSimCalorimeterHit(readHit,!isInserted.second); /* copy data from G4 hit to readout hit */
+					g4hit->setSimCalorimeterHit(simHit,!isInserted.second); /* copy data from G4 hit to readout hit */
 				}
 
 				ecalReadoutMap.clear();
