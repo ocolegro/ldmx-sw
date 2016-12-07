@@ -64,15 +64,12 @@ void RootPersistencyManager::buildEvent(const G4Event* anEvent, Event* outputEve
     simParticleBuilder_.setCurrentEvent(anEvent);
 
     // Build the SimParticle list for the output ROOT event.
-    std::cout << "Building simparticle list" << std::endl;
     simParticleBuilder_.buildSimParticles(outputEvent);
 
     // Assign SimParticle objects to SimTrackerHits.
-    std::cout << "Assigning hit particles to trakcer now" << std::endl;
     simParticleBuilder_.assignTrackerHitSimParticles();
 
     // Assign SimParticle objects to SimCalorimeterHits.
-    std::cout << "Assigning hit particles to calor now " << std::endl;
     simParticleBuilder_.assignCalorimeterHitSimParticles();
 }
 
@@ -145,41 +142,43 @@ void RootPersistencyManager::writeHitsCollections(const G4Event* anEvent, Event*
             }
         } else if (dynamic_cast<G4CalorimeterHitsCollection*>(hc) != nullptr) {
         	std::pair<std::map<layer_cell_pair, int>::iterator, bool> isInserted;
-            for (int iHit = 0; iHit < nHits; iHit++) {
-                G4CalorimeterHit* g4hit = (G4CalorimeterHit*) hc->GetHit(iHit);
-                std::cout << "For set " << collName << " we had nhits = " << nHits << std::endl;
-                if (collName == EventConstants::ECAL_SIM_HITS){
 
-                        int detIDraw= g4hit->getID();
-                        detID->setRawValue(detIDraw);
-                        detID->unpack();
-                        int layer =detID->getFieldValue("layer");
-                        int cellid=detID->getFieldValue("cellid");
-                        std::pair<layer_cell_pair,int> layer_cell_index =
-                        		std::make_pair(std::make_pair(layer,cellid),outputColl->GetEntries());
-                        isInserted = ecalReadoutMap.insert(layer_cell_index);
+			if (collName == EventConstants::ECAL_SIM_HITS){
+				for (int iHit = 0; iHit < nHits; iHit++) {
+					G4CalorimeterHit* g4hit = (G4CalorimeterHit*) hc->GetHit(iHit);
+					std::cout << "For set " << collName << " we had nhits = " << nHits << std::endl;
 
-                        ReadoutCalorimeterHit* readHit;
-                        /*if (!isInserted.second){
-                        	readHit = (ReadoutCalorimeterHit*) outputColl->ConstructedAt(isInserted.first->second);
-                        }
-                        else{*/
-						readHit = (ReadoutCalorimeterHit*) outputColl->ConstructedAt(outputColl->GetEntries());
-                        //}
-                		g4hit->ReadCalorimeterHit(readHit); /* copy data from G4 hit to sim hit */
-                }
-                else if (collName == EventConstants::HCAL_SIM_HITS){
-                		SimCalorimeterHit* simHit = (SimCalorimeterHit*) outputColl->ConstructedAt(outputColl->GetEntries());
-                		g4hit->setSimCalorimeterHit(simHit); /* copy data from G4 hit to sim hit */
-                }
-                else{
-                		SimCalorimeterHit* simHit = (SimCalorimeterHit*) outputColl->ConstructedAt(outputColl->GetEntries());
-                		g4hit->setSimCalorimeterHit(simHit); /* copy data from G4 hit to sim hit */
-                }
-            }
-            ecalReadoutMap.clear();
-        }
-    }
+
+							int detIDraw= g4hit->getID();
+							detID->setRawValue(detIDraw);
+							detID->unpack();
+							int layer =detID->getFieldValue("layer");
+							int cellid=detID->getFieldValue("cellid");
+							std::pair<layer_cell_pair,int> layer_cell_index =
+									std::make_pair(std::make_pair(layer,cellid),outputColl->GetEntries());
+							isInserted = ecalReadoutMap.insert(layer_cell_index);
+
+							ReadoutCalorimeterHit* readHit;
+							/*if (!isInserted.second){
+								readHit = (ReadoutCalorimeterHit*) outputColl->ConstructedAt(isInserted.first->second);
+							}
+							else{*/
+							readHit = (ReadoutCalorimeterHit*) outputColl->ConstructedAt(outputColl->GetEntries());
+							//}
+							g4hit->ReadCalorimeterHit(readHit); /* copy data from G4 hit to sim hit */
+					}
+				ecalReadoutMap.clear();
+			}
+
+			else{
+				for (int iHit = 0; iHit < nHits; iHit++) {
+					G4CalorimeterHit* g4hit = (G4CalorimeterHit*) hc->GetHit(iHit);
+					SimCalorimeterHit* simHit = (SimCalorimeterHit*) outputColl->ConstructedAt(outputColl->GetEntries());
+					g4hit->setSimCalorimeterHit(simHit); /* copy data from G4 hit to sim hit */
+				}
+			}
+		}
+	}
 }
 
 } // namespace sim
