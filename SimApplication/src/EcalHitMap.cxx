@@ -13,12 +13,12 @@ EcalHitMap::EcalHitMap(double width, double side){
 	double   xstart    = -((double) ncellwide + 0.5) * side;
 	double   ystart    = -((double) ncellwide + 1) * side * sqrt(3) / 2;
 
-	if (this->verboseLevel > 0) {
-		std::cout << " -- Initialising HoneyComb with parameters: " << std::endl
-				<< " ---- (xstart,ystart) = (" << xstart << "," << ystart << ")"
-				<< ", side = " << side << ", nx = " << nx << ", ny=" << ny
-				<< std::endl;
-	}
+
+	std::cout << " -- Initialising HoneyComb with parameters: " << std::endl
+			<< " ---- (xstart,ystart) = (" << xstart << "," << ystart << ")"
+			<< ", side = " << side << ", nx = " << nx << ", ny=" << ny
+			<< std::endl;
+
 	buildMap( xstart, ystart, side, ny, nx);
 }
 
