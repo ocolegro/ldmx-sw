@@ -176,11 +176,12 @@ void RootPersistencyManager::writeHitsCollections(const G4Event* anEvent, Event*
 					if (!isInserted.second){
 							std::cout << "The deposited energy is now " << readHit->getEdep() << std::endl;
 					}
+					for (int iHit = 0; iHit < outputColl->GetEntries(); iHit++) {
+						ReadoutCalorimeterHit* readHit = (ReadoutCalorimeterHit*) outputColl->At(iHit );
+						std::cout << "iHit = " << iHit << " has energy = " << readHit->getEdep() << std::endl;
+					}
 				}
-				for (int iHit = 0; iHit < outputColl->GetEntries(); iHit++) {
-					ReadoutCalorimeterHit* readHit = (ReadoutCalorimeterHit*) outputColl->At(iHit );
-					std::cout << "iHit = " << iHit << " has energy = " << readHit->getEdep() << std::endl;
-				}
+
 				ecalReadoutMap.clear();
 			}
 
