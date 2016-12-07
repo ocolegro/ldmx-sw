@@ -2,6 +2,7 @@
 
 // LDMX
 #include "SimApplication/TrackerSD.h"
+#include "SimApplication/CalorimeterSD.h"
 #include "SimApplication/EcalSD.h"
 #include "SimApplication/HcalSD.h"
 #include "SimApplication/MagneticFieldStore.h"
@@ -19,10 +20,11 @@
 #include "G4RegionStore.hh"
 #include "G4Region.hh"
 
+#include "DetDescr/EcalDetectorID.h"
+
 // STL
 #include <string>
 #include <stdlib.h>
-#include "../../DetDescr/include/DetDescr/EcalDetectorID.h"
 
 using detdescr::DetectorID;
 using detdescr::DefaultDetectorID;
@@ -129,23 +131,20 @@ void AuxInfoReader::createSensitiveDetector(G4String theSensDetName, const G4GDM
      * Build the Sensitive Detector, and re-assign the detID if applicable
      */
     G4VSensitiveDetector* sd = 0;
-    switch(sdType){
-		case (sdType == "TrackerSD") : {
+
+		if (sdType == "TrackerSD") {
 			sd = new TrackerSD(theSensDetName, hcName, subdetID, detID);
-		}
-		case  (sdType == "EcalSD") : {
+		} else if  (sdType == "EcalSD")  {
     		detID  = new EcalDetectorID();
     		sd = new EcalSD(theSensDetName, hcName, subdetID, detID);
-    	}
-		case (sdType == "EcalSD") : {
+    	} else if (sdType == "HcalSD")  {
     		sd = new HcalSD(theSensDetName, hcName, subdetID, detID);
-    	}
-
-		default : {
+    	} else if (sdType == "CalorimterSD")  {
+    		sd = new CalorimterSD(theSensDetName, hcName, subdetID, detID);
+    	} else  {
         std::cerr << "Unknown SensitiveDetector type: " << sdType << std::endl;
         G4Exception("", "", FatalException, "Unknown SensitiveDetector type in aux info.");
 		}
-    }
 
     /*
      * Fix  layer depth if the Sensitive Detector is not the Tracker
