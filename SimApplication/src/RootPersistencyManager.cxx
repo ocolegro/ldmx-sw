@@ -158,7 +158,7 @@ void RootPersistencyManager::writeHitsCollections(const G4Event* anEvent, Event*
 
 					ReadoutCalorimeterHit* readHit;
 					if (isInserted.second == false){
-						readHit = (ReadoutCalorimeterHit*) outputColl->At(isInserted.first->second);
+						readHit = (ReadoutCalorimeterHit*) outputColl->At(isInserted.first->second - 1);
 					}
 					else{
 						readHit = (ReadoutCalorimeterHit*) outputColl->ConstructedAt(outputColl->GetEntries());
