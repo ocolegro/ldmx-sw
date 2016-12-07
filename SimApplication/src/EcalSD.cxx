@@ -12,9 +12,9 @@
 // LDMX
 #include "Event/RootEventWriter.h"
 #include "Event/EventConstants.h"
-#include "Event/EcalHitMap.h"
+#include "SimApplication/EcalHitMap.h"
 
-using event::EcalHitMap;
+using sim::EcalHitMap;
 using event::EventConstants;
 using event::RootEventWriter;
 
