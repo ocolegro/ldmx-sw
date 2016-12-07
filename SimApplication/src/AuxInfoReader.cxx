@@ -133,7 +133,7 @@ void AuxInfoReader::createSensitiveDetector(G4String theSensDetName, const G4GDM
         sd = new TrackerSD(theSensDetName, hcName, subdetID, detID);
     } else if (sdType == "EcalSD" || sdType == "HcalSD") {
     	if (sdType == "EcalSD"){
-    		DetectorID* detID  = new EcalDetectorID();
+    		detID  = new EcalDetectorID();
     		sd = new EcalSD(theSensDetName, hcName, subdetID, detID);
     	}
     	else{
