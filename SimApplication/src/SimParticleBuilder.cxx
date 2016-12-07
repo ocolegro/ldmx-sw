@@ -130,7 +130,7 @@ void SimParticleBuilder::assignCalorimeterHitSimParticles() {
                 if (trackID > 0 ) {
                 	std::cout << "Finding the sim particle now" << std::endl;
                     SimParticle* simParticle = findSimParticle(trackID);
-                    if (simParticle != NULL) {
+                    if (simParticle != NULL and hit->getSimCalorimeterHit()!=nullptr) {
                         hit->getSimCalorimeterHit()->setSimParticle(simParticle);
                     } else {
                         std::cerr << "WARNING: Failed to find SimParticle for SimCalorimeterHit with track ID " << trackID << std::endl;
