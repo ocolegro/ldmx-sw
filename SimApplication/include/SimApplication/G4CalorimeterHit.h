@@ -77,16 +77,15 @@ class G4CalorimeterHit: public G4VHit {
         void ReadCalorimeterHit(ReadoutCalorimeterHit* readoutHit, bool existingHit) {
 
 			if(existingHit){
-				//readoutHit->setEdep(edep_ + readoutHit->getEdep());
-				readoutHit->setID(id_);
-				readoutHit->setEdep(readoutHit->getEdep());
+				readoutHit->setEdep(edep_ + readoutHit->getEdep());
+				/*readoutHit->setID(id_);
 				readoutHit->setPosition(position_.x(), position_.y(), position_.z());
 				readoutHit->setTime(time_);
-				this->readCalHit_ = readoutHit;
+				this->readCalHit_ = readoutHit;*/
 			}
 			else{
 				readoutHit->setID(id_);
-				readoutHit->setEdep(readoutHit->getEdep());
+				readoutHit->setEdep(edep_);
 				readoutHit->setPosition(position_.x(), position_.y(), position_.z());
 				readoutHit->setTime(time_);
 				this->readCalHit_ = readoutHit;
