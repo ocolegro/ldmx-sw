@@ -72,8 +72,7 @@ class G4CalorimeterHit: public G4VHit {
 
         void ReadCalorimeterHit(ReadoutCalorimeterHit* readoutHit) {
 			readoutHit->setID(id_);
-			G4double prevEnergy = readoutHit->getEdep();
-			readoutHit->setEdep(edep_ + prevEnergy);
+			readoutHit->setEdep(edep_ + readoutHit->getEdep());
 			readoutHit->setPosition(position_.x(), position_.y(), position_.z());
 			readoutHit->setTime(time_);
             this->readCalHit_ = readoutHit;
