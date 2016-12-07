@@ -1,4 +1,4 @@
-#include "DetDescr/EcalDetectorID.h"
+#include "../include/DetDescr/EcalDetectorID.h"
 
 namespace detdescr {
 

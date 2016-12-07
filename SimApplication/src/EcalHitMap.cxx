@@ -1,6 +1,6 @@
-#include "DetDescr/EcalHitMap.h"
+#include "SimApplication/EcalHitMap.h"
 
-namespace detdescr {
+namespace sim {
 
 EcalHitMap::EcalHitMap(double width, double side){
 	ecalMap = new TH2Poly();

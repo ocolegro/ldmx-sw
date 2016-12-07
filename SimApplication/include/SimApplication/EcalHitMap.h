@@ -2,14 +2,14 @@
 #define DETDESCR_ECALHITMAP_H_
 
 // ROOT
-//#include "TH2Poly.h"
+#include "TH2Poly.h"
 
 //LDMX
 #include "Event/EventConstants.h"
 
 using event::EventConstants;
 
-namespace detdescr {
+namespace sim {
 
 class EcalHitMap {
 

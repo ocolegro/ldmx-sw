@@ -10,9 +10,6 @@
 #include "SimApplication/VisAttributesStore.h"
 #include "DetDescr/DetectorIDStore.h"
 #include "DetDescr/DefaultDetectorID.h"
-#include "DetDescr/EcalDetectorID.h"
-
-// Geant4
 #include "G4LogicalVolumeStore.hh"
 #include "G4SDManager.hh"
 #include "G4FieldManager.hh"
@@ -25,6 +22,7 @@
 // STL
 #include <string>
 #include <stdlib.h>
+#include "../../DetDescr/include/DetDescr/EcalDetectorID.h"
 
 using detdescr::DetectorID;
 using detdescr::DefaultDetectorID;

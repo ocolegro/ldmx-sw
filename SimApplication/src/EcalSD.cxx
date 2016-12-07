@@ -2,6 +2,7 @@
 
 // STL
 #include <iostream>
+#include "../include/SimApplication/EcalHitMap.h"
 
 // Geant4
 #include "G4Step.hh"
@@ -12,7 +13,6 @@
 // LDMX
 #include "Event/RootEventWriter.h"
 #include "Event/EventConstants.h"
-#include "DetDescr/EcalHitMap.h"
 
 using detdescr::EcalHitMap;
 using event::EventConstants;
