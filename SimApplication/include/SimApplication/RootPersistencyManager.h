@@ -30,6 +30,7 @@ namespace sim {
 class RootPersistencyManager : public G4PersistencyManager {
 
     public:
+		typedef std::pair<int, int> layer_cell_pair;
 
         /** Constructor, which will install the object as the global persistency manager. */
         RootPersistencyManager();
@@ -104,7 +105,6 @@ class RootPersistencyManager : public G4PersistencyManager {
         SimParticleBuilder simParticleBuilder_;
         RootEventWriter* writer_;
         DetectorID* detID;
-        typedef std::pair<int, int> layer_cell_pair;
         std::map<layer_cell_pair, int> ecalReadoutMap;
 
 };
