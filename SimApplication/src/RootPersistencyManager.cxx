@@ -22,7 +22,7 @@ RootPersistencyManager::RootPersistencyManager()
             writer_(new RootEventWriter("ldmx_sim_events.root", new SimEvent)) {
     G4PersistencyCenter::GetPersistencyCenter()->RegisterPersistencyManager(this);
     G4PersistencyCenter::GetPersistencyCenter()->SetPersistencyManager(this, "RootPersistencyManager");
-    detID = new DefaultDetectorID();
+    detID = new EcalDetectorID();
 }
 
 G4bool RootPersistencyManager::Store(const G4Event* anEvent) {
