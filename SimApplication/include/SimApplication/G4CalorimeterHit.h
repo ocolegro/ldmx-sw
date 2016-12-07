@@ -54,7 +54,7 @@ class G4CalorimeterHit: public G4VHit {
             this->edep_ = edep;
         }
 
-        float getEdep(float edep) {
+        float getEdep() {
             return edep;
         }
 
