@@ -164,9 +164,10 @@ void RootPersistencyManager::writeHitsCollections(const G4Event* anEvent, Event*
 					else{
 						readHit = (ReadoutCalorimeterHit*) outputColl->ConstructedAt(outputColl->GetEntries());
 					}
+					std::cout << "Found a new hit with energy " << g4hit->getEdep() << std::endl;
 					if (!isInserted.second){
-						std::cout << "Is inserted = " << isInserted.second << "reading a hit with energy " << readHit->getEdep() <<
-								" adding on energy from g4hit " << g4hit->getEdep() << std::endl;
+						std::cout << "Is inserted = " << isInserted.second << "reading a hit with energy " << readHit->getEdep()
+								<< "from iLoc = " << layer_cell_index->second << " adding on energy from g4hit " << g4hit->getEdep() << std::endl;
 					}
 						g4hit->ReadCalorimeterHit(readHit,!isInserted.second); /* copy data from G4 hit to sim hit */
 					if (!isInserted.second){
