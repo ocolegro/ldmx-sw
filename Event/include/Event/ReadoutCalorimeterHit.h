@@ -26,10 +26,6 @@ class ReadoutCalorimeterHit: public TObject {
             return id_;
         }
 
-        float getEdep() {
-            return edep_;
-        }
-
         std::vector<float> getPosition() const {
             return {x_, y_, z_};
         }
@@ -50,6 +46,9 @@ class ReadoutCalorimeterHit: public TObject {
             this->edep_ = edep;
         }
 
+        float getEdep() {
+            return edep_;
+        }
         void setPosition(const float x, const float y, const float z) {
             this->x_ = x;
             this->y_ = y;

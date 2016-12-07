@@ -54,6 +54,10 @@ class G4CalorimeterHit: public G4VHit {
             this->edep_ = edep;
         }
 
+        float getEdep(float edep) {
+            return edep;
+        }
+
         void setPosition(const float x, const float y, const float z) {
             position_.set(x, y, z);
         }
