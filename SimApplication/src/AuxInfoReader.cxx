@@ -125,27 +125,35 @@ void AuxInfoReader::createSensitiveDetector(G4String theSensDetName, const G4GDM
             G4Exception("", "", FatalException, "The referenced Detector ID was not found.");
         }
     }
-
+    /*
+     * Build the Sensitive Detector, and re-assign the detID if applicable
+     */
     G4VSensitiveDetector* sd = 0;
-    if (sdType == "TrackerSD") {
-        sd = new TrackerSD(theSensDetName, hcName, subdetID, detID);
-    } else if (sdType == "EcalSD" || sdType == "HcalSD") {
-    	if (sdType == "EcalSD"){
+    switch(sdType){
+		case (sdType == "TrackerSD") : {
+			sd = new TrackerSD(theSensDetName, hcName, subdetID, detID);
+		}
+		case  (sdType == "EcalSD") : {
     		detID  = new EcalDetectorID();
     		sd = new EcalSD(theSensDetName, hcName, subdetID, detID);
     	}
-    	else{
+		case (sdType == "EcalSD") : {
     		sd = new HcalSD(theSensDetName, hcName, subdetID, detID);
     	}
-        if (layerDepth != -1) {
-            ((CalorimeterSD*)sd)->setLayerDepth(layerDepth);
-            std::cout << "Layer depth set to " << layerDepth << std::endl;
-        }
-    } else {
+
+		default : {
         std::cerr << "Unknown SensitiveDetector type: " << sdType << std::endl;
         G4Exception("", "", FatalException, "Unknown SensitiveDetector type in aux info.");
+		}
     }
 
+    /*
+     * Fix  layer depth if the Sensitive Detector is not the Tracker
+     */
+    if (sdType != "TrackerSD"  && layerDepth != -1) {
+        ((CalorimeterSD*)sd)->setLayerDepth(layerDepth);
+        std::cout << "Layer depth set to " << layerDepth << std::endl;
+    }
     sd->SetVerboseLevel(verbose);
 
     std::cout << "Created " << sdType << " " << theSensDetName
