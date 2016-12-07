@@ -81,10 +81,11 @@ class G4CalorimeterHit: public G4VHit {
 			}
 			else{
 				readoutHit->setEdep(readoutHit->getEdep());
+				this->readCalHit_ = readoutHit;
 			}
 			readoutHit->setPosition(position_.x(), position_.y(), position_.z());
 			readoutHit->setTime(time_);
-            this->readCalHit_ = readoutHit;
+
         }
 
         SimCalorimeterHit* getSimCalorimeterHit() {
