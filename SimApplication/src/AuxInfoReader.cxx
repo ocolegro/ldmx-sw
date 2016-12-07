@@ -10,6 +10,7 @@
 #include "SimApplication/VisAttributesStore.h"
 #include "DetDescr/DetectorIDStore.h"
 #include "DetDescr/DefaultDetectorID.h"
+#include "DetDescr/EcalDetectorID.h"
 
 // Geant4
 #include "G4LogicalVolumeStore.hh"
@@ -27,6 +28,7 @@
 
 using detdescr::DetectorID;
 using detdescr::DefaultDetectorID;
+using detdescr::EcalDetectorID;
 using detdescr::IDField;
 using detdescr::DetectorIDStore;
 
@@ -131,6 +133,7 @@ void AuxInfoReader::createSensitiveDetector(G4String theSensDetName, const G4GDM
         sd = new TrackerSD(theSensDetName, hcName, subdetID, detID);
     } else if (sdType == "EcalSD" || sdType == "HcalSD") {
     	if (sdType == "EcalSD"){
+    		DetectorID* detID  = new EcalDetectorID();
     		sd = new EcalSD(theSensDetName, hcName, subdetID, detID);
     	}
     	else{
