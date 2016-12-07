@@ -160,12 +160,12 @@ void RootPersistencyManager::writeHitsCollections(const G4Event* anEvent, Event*
                         isInserted = ecalReadoutMap.insert(layer_cell_index);
 
                         ReadoutCalorimeterHit* readHit;
-                        if (!isInserted.second){
+                        /*if (!isInserted.second){
                         	readHit = (ReadoutCalorimeterHit*) outputColl->ConstructedAt(isInserted.first->second);
                         }
-                        else{
-                    		readHit = (ReadoutCalorimeterHit*) outputColl->ConstructedAt(outputColl->GetEntries());
-                        }
+                        else{*/
+						readHit = (ReadoutCalorimeterHit*) outputColl->ConstructedAt(outputColl->GetEntries());
+                        //}
                 		g4hit->ReadCalorimeterHit(readHit); /* copy data from G4 hit to sim hit */
                 }
                 else if (collName == EventConstants::HCAL_SIM_HITS){
