@@ -179,7 +179,7 @@ void RootPersistencyManager::writeHitsCollections(const G4Event* anEvent, Event*
 				}
 				for (int iHit = 0; iHit < outputColl->GetEntries(); iHit++) {
 					ReadoutCalorimeterHit* readHit = (ReadoutCalorimeterHit*) outputColl->At(isInserted.first->second );
-					std::cout << "iHit = " << iHit << " has energy = " << readHit.getEnergy() << std::endl;
+					std::cout << "iHit = " << iHit << " has energy = " << readHit->getEnergy() << std::endl;
 				}
 				ecalReadoutMap.clear();
 			}
