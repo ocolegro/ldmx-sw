@@ -147,7 +147,6 @@ void RootPersistencyManager::writeHitsCollections(const G4Event* anEvent, Event*
 
 				for (int iHit = 0; iHit < nHits; iHit++) {
 					G4CalorimeterHit* g4hit = (G4CalorimeterHit*) hc->GetHit(iHit);
-					std::cout << "For set " << collName << " we had nhits = " << outputColl->GetEntries() << std::endl;
 					int detIDraw= g4hit->getID();
 					detID->setRawValue(detIDraw);
 					detID->unpack();
@@ -164,10 +163,14 @@ void RootPersistencyManager::writeHitsCollections(const G4Event* anEvent, Event*
 					else{
 						readHit = (ReadoutCalorimeterHit*) outputColl->ConstructedAt(outputColl->GetEntries());
 					}
-					std::cout << "Found a new hit with energy " << g4hit->getEdep() << std::endl;
+					std::cout << "For set " << collName << " we had nhits = " << outputColl->GetEntries() << std::endl;
+					std::cout << "The latest hit deposited energy =  " << g4hit->getEdep() << std::endl;
 					if (!isInserted.second){
-						std::cout << "Is inserted = " << isInserted.second << "reading a hit with energy " << readHit->getEdep()
-								<< "from iLoc = " << isInserted.first->second << " adding on energy from g4hit " << g4hit->getEdep() << std::endl;
+						std::cout << "This is a repeated hit that previously had energy = " << isInserted.second << "reading a hit with energy " << readHit->getEdep()
+								<< "from iLoc = " << isInserted.first->second << " we are adding on energy from g4hit " << g4hit->getEdep() << std::endl;
+					}
+					else{
+						std::cout << "The hit is new and was deposited at  " << outputColl->GetEntries() << std::endl;
 					}
 						g4hit->ReadCalorimeterHit(readHit,!isInserted.second); /* copy data from G4 hit to sim hit */
 					if (!isInserted.second){
