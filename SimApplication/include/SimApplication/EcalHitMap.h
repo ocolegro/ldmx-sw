@@ -5,6 +5,7 @@
 #include "TH2Poly.h"
 
 //LDMX
+#include "Event/Event.h"
 #include "Event/EventConstants.h"
 
 using event::EventConstants;
