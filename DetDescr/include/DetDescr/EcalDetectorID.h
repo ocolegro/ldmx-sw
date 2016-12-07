@@ -1,5 +1,5 @@
 #ifndef DETDESCR_ECALDETECTORID_H_
-#define DETDESCR_ECALTDETECTORID_H_
+#define DETDESCR_ECALDETECTORID_H_
 
 // LDMX
 #include "DetDescr/DetectorID.h"

@@ -1,8 +1,5 @@
 #include "DetDescr/EcalHitMap.h"
 
-
-
-
 namespace detdescr {
 
 EcalHitMap::EcalHitMap(double width, double side){
