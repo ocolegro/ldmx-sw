@@ -147,6 +147,7 @@ void RootPersistencyManager::writeHitsCollections(const G4Event* anEvent, Event*
         	std::pair<std::map<layer_cell_pair, int>::iterator, bool> isInserted;
             for (int iHit = 0; iHit < nHits; iHit++) {
                 G4CalorimeterHit* g4hit = (G4CalorimeterHit*) hc->GetHit(iHit);
+                std::cout << "For set " << collName << " we had nhits = " << nHits << std::endl;
                 if (collName == EventConstants::ECAL_SIM_HITS){
 
                         int detIDraw= g4hit->getID();

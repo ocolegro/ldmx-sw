@@ -68,7 +68,6 @@ G4bool EcalSD::ProcessHits(G4Step* aStep, G4TouchableHistory*) {
     int layerNumber = prePoint->GetTouchableHandle()->GetHistory()->GetVolume(layerDepth_)->GetCopyNo();
     int cellID = map->FindBin(position[0],position[1]);
     detID_->setFieldValue(1, layerNumber);
-    std::cout << "THe cellID is " << cellID << std::endl;
     detID_->setFieldValue(2, cellID);
     hit->setID(detID_->pack());
 
