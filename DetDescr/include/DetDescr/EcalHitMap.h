@@ -24,7 +24,7 @@ class EcalHitMap {
 				Int_t s);
 
 		inline TH2Poly * getMap(){
-			return map;
+			return ecalMap;
 		};
 
 
