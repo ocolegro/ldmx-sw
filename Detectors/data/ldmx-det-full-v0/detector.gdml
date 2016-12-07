@@ -186,7 +186,7 @@
       <auxiliary auxtype="Verbose" auxvalue="0"/> 
     </auxiliary>    
     <auxiliary auxtype="SensDet" auxvalue="TargetSD1">
-      <auxiliary auxtype="SensDetType" auxvalue="HcalSD"/>
+      <auxiliary auxtype="SensDetType" auxvalue="CalorimeterSD"/>
       <auxiliary auxtype="HitsCollection" auxvalue="TargetSimHits"/>
       <auxiliary auxtype="SubdetID" auxvalue="3"/>
       <auxiliary auxtype="LayerDepth" auxvalue="1"/>
