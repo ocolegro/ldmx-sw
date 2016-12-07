@@ -72,7 +72,7 @@ class G4CalorimeterHit: public G4VHit {
 				simCalHit->setEdep(edep_);
 				simCalHit->setPosition(position_.x(), position_.y(), position_.z());
 				simCalHit->setTime(time_);
-				this->setEdep = simCalHit;
+				this->simCalHit_ = simCalHit;
 			}
 
         }
