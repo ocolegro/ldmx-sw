@@ -12,16 +12,14 @@
 // LDMX
 #include "Event/RootEventWriter.h"
 #include "Event/EventConstants.h"
-#include "DetDescr/EcalDetectorID.h"
 
 using event::EventConstants;
 using event::RootEventWriter;
-using detdescr::EcalDetectorID;
 using detdescr::EcalHexReadout;
 
 namespace sim {
 
-EcalSD::EcalSD(G4String name, G4String theCollectionName, int subdetID, DetectorID* detID = new EcalDetectorID()) :
+EcalSD::EcalSD(G4String name, G4String theCollectionName, int subdetID, DetectorID* detID ) :
 		CalorimeterSD(name,theCollectionName,subdetID,detID){
     hitMap = new EcalHexReadout();
 };

@@ -10,6 +10,7 @@
 // ROOT
 #include "TH2Poly.h"
 #include "TMath.h"
+
 using event::Event;
 using detdescr::EcalDetectorID;
 using detdescr::DetectorID;
