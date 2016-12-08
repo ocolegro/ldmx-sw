@@ -27,7 +27,7 @@ class EcalHexReadout {
             std::pair<std::map<int,std::pair<float,float>>::iterator, bool> isInserted;
             if (!isInserted.second) {
                 std::cout << "This cellId does not exist, returning (-1,-1)" << std::endl
-                return std::make_pair(-1,-1);
+                return std::make_pair<float,float>(-1.,-1.);
             }
             return isInserted.first->second;
         };
