@@ -1,6 +1,9 @@
 #ifndef DETDESCR_ECALHEXREADOUT_H_
 #define DETDESCR_ECALHEXREADOUT_H_
 
+//C++
+#include "map.h"
+
 // ROOT
 #include "TH2Poly.h"
 
