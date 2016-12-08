@@ -152,7 +152,7 @@ void RootPersistencyManager::writeHitsCollections(const G4Event* anEvent,
                     G4CalorimeterHit* g4hit = (G4CalorimeterHit*) hc->GetHit(iHit);
 
                     std::pair<layer_cell_pair, int> layer_cell_index =
-                            (hitToPair(g4hit),outputColl->GetEntries());
+                            (std::make_pair(hitToPair(g4hit),outputColl->GetEntries()));
 
                     isInserted = ecalReadoutMap.insert(layer_cell_index);
                     SimCalorimeterHit* simHit;
