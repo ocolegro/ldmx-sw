@@ -26,8 +26,8 @@ class EcalHexReadout {
         inline std::pair<float,float> getCellCentroidXYPair(int cellId){
             std::pair<std::map<int,std::pair<float,float>>::iterator, bool> isInserted;
             if (!isInserted.second) {
-                std::cout << "This cellId does not exist, returning - 1" << std::endl
-                return - 1;
+                std::cout << "This cellId does not exist, returning (-1,-1)" << std::endl
+                return std::make_pair(-1,-1);
             }
             return isInserted.first->second;
         };
