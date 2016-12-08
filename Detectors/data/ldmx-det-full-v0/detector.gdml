@@ -179,7 +179,7 @@
       <auxiliary auxtype="Verbose" auxvalue="0"/>
     </auxiliary>
     <auxiliary auxtype="SensDet" auxvalue="TriggerPadSD1">
-      <auxiliary auxtype="SensDetType" auxvalue="HcalSD"/>
+      <auxiliary auxtype="SensDetType" auxvalue="CalorimeterSD"/>
       <auxiliary auxtype="HitsCollection" auxvalue="TriggerPadSimHits"/>
       <auxiliary auxtype="SubdetID" auxvalue="2"/>
       <auxiliary auxtype="LayerDepth" auxvalue="1"/>
