@@ -3,7 +3,6 @@
 // LDMX
 #include "Event/Event.h"
 #include "Event/EventConstants.h"
-#include "SimApplication/G4CalorimeterHit.h"
 #include "SimApplication/G4TrackerHit.h"
 
 // Geant4
@@ -154,14 +153,10 @@ void RootPersistencyManager::writeHitsCollections(const G4Event* anEvent,
                 std::pair<std::map<layer_cell_pair, int>::iterator, bool> isInserted;
                 for (int iHit = 0; iHit < nHits; iHit++) {
                     G4CalorimeterHit* g4hit = (G4CalorimeterHit*) hc->GetHit(iHit);
-                    int detIDraw = g4hit->getID();
-                    detID->setRawValue(detIDraw);
-                    detID->unpack();
-                    int layer = detID->getFieldValue("layer");
-                    int cellid = detID->getFieldValue("cellid");
+
 
                     std::pair<layer_cell_pair, int> layer_cell_index =
-                            std::make_pair(std::make_pair(layer, cellid),outputColl->GetEntries());
+                            (hitToPair(g4hit),outputColl->GetEntries());
                     isInserted = ecalReadoutMap.insert(layer_cell_index);
 
                     SimCalorimeterHit* simHit;
