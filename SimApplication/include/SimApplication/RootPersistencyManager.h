@@ -19,6 +19,7 @@
 #include "Event/RootEventWriter.h"
 #include "SimApplication/SimParticleBuilder.h"
 #include "SimApplication/G4CalorimeterHit.h"
+
 using detdescr::DetectorID;
 using detdescr::EcalDetectorID;
 using event::RootEventWriter;

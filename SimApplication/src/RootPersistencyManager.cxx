@@ -8,9 +8,6 @@
 // Geant4
 #include "G4RunManager.hh"
 
-// TEmp
-
-//
 using event::Event;
 using event::EventConstants;
 

@@ -22,7 +22,7 @@ class EcalHexReadout {
         inline int getCellId(float x, float y){
             return ecalMap->FindBin(x,y);
         };
-        inline pair<float,float> getCellCentroidXYPair(int cellId){
+        inline std::pair<float,float> getCellCentroidXYPair(int cellId){
             std::pair<std::map<int,std::pair<float,float>>::iterator, bool> isInserted;
             if (!isInserted.second) {
                 std::cout << "This cellId does not exist, returning - 1" << std::endl
