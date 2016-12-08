@@ -14,10 +14,10 @@
 #include "Event/EventConstants.h"
 #include "DetDescr/EcalDetectorID.h"
 
-using sim::EcalHexReadout;
 using event::EventConstants;
 using event::RootEventWriter;
 using detdescr::EcalDetectorID;
+using detdescr::EcalHexReadout;
 
 namespace sim {
 
