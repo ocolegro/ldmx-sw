@@ -4,9 +4,6 @@
 // ROOT
 #include "TH2Poly.h"
 
-
-using event::EventConstants;
-
 namespace detdescr {
 
 class EcalHexReadout {
